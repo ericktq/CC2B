@@ -1,34 +1,46 @@
-#include <iostream>
-#include <string>
-#include <sstream>
-#include "LISTA.h"
+#include<iostream>
+#include "lista.h"
+#include "Node.h"
+#include "iterador.h"
 using namespace std;
 
-int main(){
-    LISTA *List =new LISTA();
-    ELEMENTO *Elem1= new ELEMENTO(12);
-    ELEMENTO *Elem2= new ELEMENTO(22);
-    ELEMENTO *Elem3= new ELEMENTO(32);
-    ELEMENTO *Elem4= new ELEMENTO(42);
-    ELEMENTO *Elem5= new ELEMENTO(52);
-    ELEMENTO *Elem6= new ELEMENTO(62);
-    cout<<*Elem1<<*Elem2<<endl;
+int main()
+{   cout<<"----------------lista int----------"<<endl;
+    lista<int> list1;
+    list1.push_back(5);
+    list1.push_back(200);
+    list1.push_back(115);
+    list1.mostrar();
+    list1.insertarpos(14,2);
+    list1.push_back(4);
+    list1.mostrar();
+    list1.begin();
+    list1.end();
+    iterador<int> t1(list1.head);
 
-    List->insertar(Elem1);
-    List->insertar(Elem2);
-    List->insertar(Elem3);
-    List->insertar(Elem4);
-    List->insertar(Elem5);
-    List->insertar(Elem6);
+    t1==12;
+    t1!=5;
+    while(t1.recorrer()==true){
+        t1.next();
+        ++t1;
+    }
 
+    cout<<"\n-------------lista char-------------"<<endl;
+    lista<char> list2;
+    list2.push_back('a');
+    list2.push_back('d');
+    list2.push_back('e');
+    list2.mostrar();
+    list2.insertarpos('f',1);
+    list2.mostrar();
+    iterador<char> t2(list2.head);
 
-    cout<<List->print()<<endl;
-    List->remove(1);
-    cout<<List->print()<<endl;
-    List->remove(2);
-    cout<<List->print()<<endl;
-    List->remove(3);
-    cout<<List->print()<<endl;
+    t2=='f';
+    t2!='r';
+    while(t2.recorrer()){
+        t2.next();
+        ++t2;
+    }
 
-    return 0;
 }
+
